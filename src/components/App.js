@@ -11,7 +11,7 @@ const App = () => {
       })
       .catch((err) => console.error("Error fetching posts:", err));
   }, []);
-
+  console.log(posts);
   return (
     <div className="app-container" style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
       <h1>Posts</h1>
@@ -19,7 +19,7 @@ const App = () => {
       <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
         {posts.map(post => (
           <li key={post.id} style={{ marginBottom: '1rem' }}>
-            <h2 style={{ margin: 0 }}>{post.title}</h2>
+            <h2 style={{ margin: 0 }}>{post.id}. {post.title}</h2>
             <p style={{ margin: 0 }}>{post.body}</p>
           </li>
         ))}

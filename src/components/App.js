@@ -24,7 +24,7 @@ const App = () => {
       <ol>
         {posts.map(post => (
           <li key={post.id} style={{ marginBottom: '1rem' }}>
-            <h3 style={{ margin: 0 }}>{post.title}</h3>
+            <h2 style={{ margin: 0 }}>{post.title}</h2>
             <p style={{ margin: 0 }}>{post.body}</p>
           </li>
         ))}

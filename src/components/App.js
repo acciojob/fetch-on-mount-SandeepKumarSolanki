@@ -1,13 +1,36 @@
+import React, { useState, useEffect } from 'react';
 
-import React from "react";
-import './../styles/App.css';
 
 const App = () => {
-  return (
-    <div>
-        {/* Do not remove the main div */}
-    </div>
-  )
-}
+  const [posts, setPosts] = useState([]);
 
-export default App
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/posts")
+      .then((res) => res.json())
+      .then((data) => {
+        setPosts(data);
+      })
+      .catch((err) => console.error("Error fetching posts:", err));
+  }, []);
+
+  console.log(posts)
+  return (
+    <div className="app-container" style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
+      <h1>Posts</h1>
+
+      {/* {loading && <p>Loading posts...</p>}
+      {error && <p style={{ color: 'red' }}>Error: {error}</p>} */}
+
+      <ol>
+        {posts.map(post => (
+          <li key={post.id} style={{ marginBottom: '1rem' }}>
+            <h3 style={{ margin: 0 }}>{post.title}</h3>
+            <p style={{ margin: 0 }}>{post.body}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+};
+
+export default App;

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-
 const App = () => {
   const [posts, setPosts] = useState([]);
 
@@ -13,22 +12,18 @@ const App = () => {
       .catch((err) => console.error("Error fetching posts:", err));
   }, []);
 
-  console.log(posts)
   return (
     <div className="app-container" style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
       <h1>Posts</h1>
 
-      {/* {loading && <p>Loading posts...</p>}
-      {error && <p style={{ color: 'red' }}>Error: {error}</p>} */}
-
-      <ol>
+      <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
         {posts.map(post => (
           <li key={post.id} style={{ marginBottom: '1rem' }}>
             <h2 style={{ margin: 0 }}>{post.title}</h2>
             <p style={{ margin: 0 }}>{post.body}</p>
           </li>
         ))}
-      </ol>
+      </ul>
     </div>
   );
 };
